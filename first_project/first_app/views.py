@@ -18,12 +18,12 @@ def form_name_view(request):
         form = forms.FormName(request.POST)
 
         if form.is_valid():
-
             print("VALIDATION SUCCESS!")
-        #GRAB DATA
         print("NAME: "+form.cleaned_data['name'])
         print("EMAIL: "+form.cleaned_data['email'])
         print("TEXT: "+form.cleaned_data['text'])
+
+
 
 
 
