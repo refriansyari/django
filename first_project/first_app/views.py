@@ -2,6 +2,7 @@ from django.shortcuts import render
 # from django.http import HttpResponse
 # from first_app.models import User
 from first_app.forms import NewUserForm
+from first_app import views
 
 def index(request):
     return render(request,'first_app/index.html')
@@ -21,7 +22,9 @@ def user(request):
             print('ERROR FORM INVALID')
 
     return render(request,'first_app/user.html',{'form':form})
-
+    
+def relative(request):
+    return render(request,'first_app/relative_url_templates.html')
 # from first_app.models import Topic,Webpage,AccessRecord
 # from . import forms
 # from .forms import FormName
