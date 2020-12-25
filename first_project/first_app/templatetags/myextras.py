@@ -8,7 +8,7 @@ def potong(value,arg):
 
 
 @register.filter
-def upper(value,arg):
+def upper(value):
 
-    return value.upper(arg,'')
+    return value.upper()
 
