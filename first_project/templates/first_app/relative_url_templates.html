@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>This is a relative urls!</h1>
-    <a href="{% url 'first_app:user' %}"> LINK TO USER SIGN UP</a>
-    <a href="{% url 'index' %}"> LINK TO HOME PAGE</a>
-    <a href="{% url 'admin:index' %}"> LINK TO ADMIN</a>
+{% extends "first_app/base.html" %}
+{% block body_block %}
 
-    
-</body>
-</html>
+    <h1>Welcome!</h1>
+    <h1>This is a relative urls!</h1>
+
+
+{% endblock %}
+
