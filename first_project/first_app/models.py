@@ -1,12 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, unique=True)
+class UserProfileInfo(models.Model):
 
-    def __str__(self):
-        return self.email
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    portofolio_site = models.URLField(blank=True)
+
+    profile_pics = models.ImageField(upload_to='profile_pics',blank=True)
+
+    def __str___(self):
+        return self.user.username
+
+# class User(models.Model):
+#     first_name = models.CharField(max_length=200)
+#     last_name = models.CharField(max_length=200)
+#     email = models.EmailField(max_length=200, unique=True)
+
+#     def __str__(self):
+#         return self.email
 
 # Create your models here.
 

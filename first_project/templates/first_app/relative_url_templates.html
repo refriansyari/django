@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 {% extends "first_app/base.html" %}
 {% block body_block %}
+{% load static %}
 
-    <h1>Welcome!</h1>
-    <h1>This is a relative urls!</h1>
+    {% if registered %}
+
+    <h1>Thank your for your registration</h1>
+
+    {% else %}
+    <section class="hero is-warning">
+    <div class="hero-body">
+    <div class="container">
+    <p></p>
+    <h1>Register here</h1>
+    <h3>Fill out the form!</h3>
+
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+        <input type="submit" value="Register">
+
+
+    </form>
+
+        </div>
+    </div>
+</section>
+
+    {% endif %}
 
 
 {% endblock %}

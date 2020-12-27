@@ -1,31 +1,68 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
+from first_app.forms import UserForm,UserProfileInfoForm
 # from first_app.models import User
-from first_app.forms import NewUserForm
+# from first_app.forms import NewUserForm
 from first_app import views
 
 def index(request):
-    context_dict = {'text': 'hello world','number':500}
-    return render(request,'first_app/index.html', context_dict)
+    return render(request,'first_app/index.html')
 
 def user(request):
+    return render(request,'first_app/user.html')
 
-    form = NewUserForm()
-
-    if request.method =="POST":
-        form = NewUserForm(request.POST)
-
-        if form.is_valid():
-            form.save(commit=True)
-            return index(request)
-        
-        else:
-            print('ERROR FORM INVALID')
-
-    return render(request,'first_app/user.html',{'form':form})
-    
 def relative(request):
-    return render(request,'first_app/relative_url_templates.html')
+    registered = False
+
+    if request.method == "POST":
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileInfoForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            if 'profile_pics' in request.FILES:
+                profile.profile_pics = request.FILES['profile_pics']
+                profile.save()
+                
+                registered = True
+        else:
+            print(user_form.errors,profile_form.errors)
+        
+    else:
+            user_form = UserForm()
+            profile_form = UserProfileInfoForm()
+
+    return render(request,'first_app/relative_url_templates.html',
+                                {'user_form':user_form,
+                                'profile_form':profile_form,
+                                'registered':registered})
+
+
+    
+
+
+# def user(request):
+
+#     form = NewUserForm()
+
+#     if request.method =="POST":
+#         form = NewUserForm(request.POST)
+
+#         if form.is_valid():
+#             form.save(commit=True)
+#             return index(request)
+        
+#         else:
+#             print('ERROR FORM INVALID')
+
+#     return render(request,'first_app/user.html',{'form':form})
 # from first_app.models import Topic,Webpage,AccessRecord
 # from . import forms
 # from .forms import FormName
@@ -50,7 +87,8 @@ def relative(request):
 #         print("EMAIL: "+form.cleaned_data['email'])
 #         print("TEXT: "+form.cleaned_data['text'])
 
-
+# def index(request):
+#     return render(request,'first_app/index.html', context_dict)
 
 
 
