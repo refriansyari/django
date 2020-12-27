@@ -20,9 +20,12 @@ from first_app import views
 
 urlpatterns = [
     path('',views.index,name='index'),
-    path('first_app/',include('first_app.urls')),
-    # path('user/',views.user,name='user'),
     path('admin/', admin.site.urls),
+    path('first_app/',include('first_app.urls')),
+    path('logout/',views.user_logout,name='logout'),
+    path('special/',views.special,name='special')
+    # path('user/',views.user,name='user'),
+    
     # path('formpage/',views.form_name_view,name='form_name'),
     
 ]

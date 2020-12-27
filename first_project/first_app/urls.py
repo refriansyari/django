@@ -4,6 +4,6 @@ from first_app import views
 app_name = 'first_app'
 
 urlpatterns = [
-    url('user/',views.user,name='user'),
-    url('relative/',views.relative,name='relative'),  
+    url('registration/',views.registration,name='registration'),
+    url('user_login/',views.user_login,name='user_login'), 
 ]
