@@ -1,20 +1,9 @@
 <!DOCTYPE html>
-{% extends "first_app/base.html" %}
+{% extends "base.html" %}
 {% block body_block %}
-
 <div class="Hero">
-    <h1>Django Level Five</h1>
-    {% if user.is_authenticated %}
-        <h2>Welcome {{ user.username }}!</h2>
-    {% else %}
-        <h2>Welcome to the site!</h2>
-    {% endif %}
+    <h1>This is Index Page</h1>
+    <h2>Here is your injected content: {{ injectme }}</h2>
 </div>
-
-
-
-
-
-
 {% endblock %}
             

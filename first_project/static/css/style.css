@@ -1,3 +1,20 @@
-table, th, td {
-    border: 2px solid black;
+
+
+.nav-link:is active {
+    color:black;
+    text-shadow: 1;
+}
+
+.nav-item:is hover{
+    background-color: darkorange;
+}
+
+.col-md{
+    margin:0;
+    padding:10px;
+}
+
+.col-md-3{
+    margin:10px;
+    padding:10px;
 }
