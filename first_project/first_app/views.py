@@ -54,7 +54,7 @@ class SchoolUpdateView(UpdateView):
 
 class SchoolDeleteView(DeleteView):
     model = models.School
-    success_url = reverse_lazy("basic_app:list")
+    success_url = reverse_lazy("first_app:list")
 
 
 class CBView(View):
